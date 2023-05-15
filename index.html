@@ -1,0 +1,24 @@
+<button id="play">play!!</button>
+<button id="play2">play another!!</button>
+<script src="https://tonejs.github.io/build/Tone.js"></script>
+	<script>
+    /* global Tone */ 
+    
+    function play1 (){
+		const synth = new Tone.Synth().toDestination();
+    const frequency = Math.random(0.5, 1) * (1000);
+    synth.triggerAttackRelease(frequency,'4n')
+    }
+    
+    function play2 (){
+		const synth = new Tone.Synth().toDestination();
+    const frequency = Math.random(0, 0.5) * (1000);
+    synth.triggerAttackRelease(frequency,'4n')
+    }
+    
+    const button = document.querySelector('#play')
+    const btn2 = document.querySelector('#play2')
+  	button.addEventListener('click', play1)
+    btn2.addEventListener('click', play2)
+
+	</script>
