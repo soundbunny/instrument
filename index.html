@@ -1,24 +1,43 @@
 <button id="play">play!!</button>
 <button id="play2">play another!!</button>
+<!-- <button id="quack">quack!!</button>
+<button id="ribbit">ribbit!!</button> -->
 <script src="https://tonejs.github.io/build/Tone.js"></script>
 	<script>
     /* global Tone */ 
+   	/*function ribbit (){
+      const ribbit = new Tone.Player('ribbit.mp3').toDestination()
+      ribbit.start() 
+    }
+    
+    function quack (){
+      const quack = new Tone.Player('quack.mp3').toDestination()
+      quack.start()
+    }*/
     
     function play1 (){
 		const synth = new Tone.Synth().toDestination();
-    const frequency = Math.random(0.5, 1) * (1000);
-    synth.triggerAttackRelease(frequency,'4n')
+    const frequency = Math.random() * (200 - 20) + 20;
+    const noteLength = ['2n', '4n', '8n', '16n', '32n', '64n'];
+		const randomIndex = Math.floor(Math.random() * noteLength.length);
+    synth.triggerAttackRelease(frequency,noteLength[randomIndex])
     }
     
     function play2 (){
 		const synth = new Tone.Synth().toDestination();
-    const frequency = Math.random(0, 0.5) * (1000);
-    synth.triggerAttackRelease(frequency,'4n')
+    const frequency = Math.random() * (800 - 300) + 300;
+    const noteLength = ['2n', '4n', '8n', '16n', '32n', '64n'];
+		const randomIndex = Math.floor(Math.random() * noteLength.length);
+    synth.triggerAttackRelease(frequency, noteLength[randomIndex])
     }
     
     const button = document.querySelector('#play')
     const btn2 = document.querySelector('#play2')
+    //const duck =  document.querySelector('#quack')
+    //const frog = document.querySelector('#ribbit')
   	button.addEventListener('click', play1)
     btn2.addEventListener('click', play2)
+    //duck.addEventListener('click', quack)
+    //frog.addEventListener('click', ribbit)
 
 	</script>
