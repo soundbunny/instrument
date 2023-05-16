@@ -1,35 +1,157 @@
-
-<table> <!--table coded with chat gpt help-->
+<style>
+  .centered-table {
+    margin: auto;
+    text-align: center;
+  }
+  .b1-button {
+    width: 80;
+    height: 50;
+    margin-right: 10;
+    margin-bottom: 10;
+    font-size: 20;
+    background-color: 7140ed;
+  }
+  .b2-button {
+    width: 80;
+    height: 50;
+    margin-right: 10;
+    margin-bottom: 10;
+    font-size: 20;
+    background-color: 9b48e8;
+  }
+  .b3-button {
+    width: 80;
+    height: 50;
+    margin-right: 10;
+    margin-bottom: 10;
+    font-size: 20;
+    background-color: bb70e6;
+  }
+  .m1-button {
+    width: 80;
+    height: 50;
+    margin-right: 10;
+    margin-bottom: 10;
+    font-size: 20;
+    background-color: 3188eb;
+  }
+  .m2-button {
+    width: 80;
+    height: 50;
+    margin-right: 10;
+    margin-bottom: 10;
+    font-size: 20;
+    background-color: 30a4e3;
+  }
+  .m3-button {
+    width: 80;
+    height: 50;
+    margin-right: 10;
+    margin-bottom: 10;
+    font-size: 20;
+    background-color: 82d4f5;
+  }
+  .h1-button {
+    width: 80;
+    height: 50;
+    margin-right: 10;
+    margin-bottom: 10;
+    font-size: 20;
+    background-color: e322c3;
+  }
+  .h2-button {
+    width: 80;
+    height: 50;
+    margin-right: 10;
+    margin-bottom: 10;
+    font-size: 20;
+    background-color: eb49ad;
+  }
+  .h3-button {
+    width: 80;
+    height: 50;
+    margin-right: 10;
+    margin-bottom: 10;
+    font-size: 20;
+    background-color: f582c5;
+  }
+  .duck-button{
+    width: 270;
+    height: 50;
+    margin-right: 10;
+    margin-bottom: 10;
+    font-size: 20;
+    background-color: fff954;
+  }
+  .frog-button{
+    width: 270;
+    height: 50;
+    margin-right: 10;
+    margin-bottom: 10;
+    font-size: 20;
+    background-color: 7ccc84;
+  }
+  .cow-button{
+    width: 270;
+    height: 50;
+    margin-right: 10;
+    margin-bottom: 10;
+    font-size: 20;
+    background-color: c28f70;
+  }
+</style>
+<table class="centered-table"> <!--table coded with chat gpt help-->
   <tr>
-    <td><button id="playb1">b1</button></td>
-    <td><button id="playb2">b2</button></td>
-    <td><button id="playb3">b3</button></td>
+    <td><button id="playb1" class="b1-button">b1</button></td>
+    <td><button id="playb2" class="b2-button">b2</button></td>
+    <td><button id="playb3" class="b3-button">b3</button></td>
   </tr>
   <tr>
-		<td><button id="playm1">m1</button></td>
-    <td><button id="playm2">m2</button></td>
-    <td><button id="playm3">m3</button></td>
+		<td><button id="playm1" class="m1-button">m1</button></td>
+    <td><button id="playm2" class="m2-button">m2</button></td>
+    <td><button id="playm3" class="m3-button">m3</button></td>
   </tr>
   <tr>
-		<td><button id="playh1">h1</button></td>
-    <td><button id="playh2">h2</button></td>
-    <td><button id="playh3">h3</button></td>
+		<td><button id="playh1" class="h1-button">h1</button></td>
+    <td><button id="playh2" class="h2-button">h2</button></td>
+    <td><button id="playh3" class="h3-button">h3</button></td>
   </tr>
 </table>
-<button id="quack">quack!!</button>
-<button id="ribbit">ribbit!!</button> 
+<table class="centered-table">
+  <tr>
+		<td><button id="quack" class="duck-button">quack!!</button></td>
+  </tr>
+  <tr>
+    <td><button id="ribbit" class="frog-button">ribbit!!</button></td>
+  </tr>
+  <tr>
+    <td><button id="moo" class="cow-button">moo!!</button></td>
+  </tr>
+</table>
 <script src="https://tonejs.github.io/build/Tone.js"></script>
 	<script>
     /* global Tone */ 
+    const audios = {
+      quack: new Tone.Player('quack.mp3'), 
+      ribbit: new Tone.Player('ribbit.mp3'),
+      moo: new Tone.Player('moo.mp3'),
+    }
+    
    	function ribbit (){
-      const ribbit = new Tone.Player('ribbit.mp3').toDestination()
-      ribbit.start()
+      audios.ribbit
+      audios.ribbit.start()
+      
     }
     
     function quack (){
       const quack = new Tone.Player('quack.mp3').toDestination()
       quack.start()
-    }
+      }
+      
+    function moo (){
+      const moo = new Tone.Player('moo.mp3').toDestination()
+      moo.start()
+      }
     
     function playb1 (){
 			const synth = new Tone.Synth().toDestination();
@@ -40,25 +162,33 @@
     }
     
     function playb2 (){
+      bass2.style.display='none'
       const synth = new Tone.Synth().toDestination();
       const frequency = Math.random() * (150 - 70 + 1) + 70;
       const noteLength = ['2n', '4n', '8n'];
       const randomIndex = Math.floor(Math.random() * noteLength.length);
       let vibratoDepth, vibratoFrequency;
       let selectedNoteLength;
+      let wait
   			if (selectedNoteLength === '2n') {
           vibratoDepth = 8;
           vibratoFrequency = 0.2;
+          wait = (60000/Tone.Transport.bpm.value) * 2
       } else if (selectedNoteLength === '4n') {
           vibratoDepth = 6;
           vibratoFrequency = 0.3;
+        	wait = 60000/Tone.Transport.bpm.value
   		} else {
         vibratoDepth = 4;
         vibratoFrequency = 0.4;
+        wait = (60000/Tone.Transport.bpm.value) * 0.5
   		}
   		const vibrato = new Tone.Vibrato(vibratoDepth, vibratoFrequency).toDestination();
   		synth.connect(vibrato);
-      synth.triggerAttackRelease(frequency,noteLength[randomIndex]) 
+      synth.triggerAttackRelease(frequency,noteLength[randomIndex])
+      setTimeout(()=>{
+        bass2.style.display='block'
+      }, wait)
     }
     
     function playb3 (){
@@ -199,6 +329,7 @@
     const h3 = document.querySelector('#playh3')
     const duck =  document.querySelector('#quack')
     const frog = document.querySelector('#ribbit')
+    const cow = document.querySelector('#moo')
     bass1.addEventListener('click', playb1)
   	bass2.addEventListener('click', playb2)
     bass3.addEventListener('click', playb3)
@@ -210,5 +341,6 @@
     h3.addEventListener('click', playh3)
     duck.addEventListener('click', quack)
     frog.addEventListener('click', ribbit)
+    cow.addEventListener('click', moo)
 
 	</script>
