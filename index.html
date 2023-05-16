@@ -1,43 +1,214 @@
-<button id="play">play!!</button>
-<button id="play2">play another!!</button>
-<!-- <button id="quack">quack!!</button>
-<button id="ribbit">ribbit!!</button> -->
+
+<table> <!--table coded with chat gpt help-->
+  <tr>
+    <td><button id="playb1">b1</button></td>
+    <td><button id="playb2">b2</button></td>
+    <td><button id="playb3">b3</button></td>
+  </tr>
+  <tr>
+		<td><button id="playm1">m1</button></td>
+    <td><button id="playm2">m2</button></td>
+    <td><button id="playm3">m3</button></td>
+  </tr>
+  <tr>
+		<td><button id="playh1">h1</button></td>
+    <td><button id="playh2">h2</button></td>
+    <td><button id="playh3">h3</button></td>
+  </tr>
+</table>
+<button id="quack">quack!!</button>
+<button id="ribbit">ribbit!!</button> 
 <script src="https://tonejs.github.io/build/Tone.js"></script>
 	<script>
     /* global Tone */ 
-   	/*function ribbit (){
+   	function ribbit (){
       const ribbit = new Tone.Player('ribbit.mp3').toDestination()
-      ribbit.start() 
+      ribbit.start()
     }
     
     function quack (){
       const quack = new Tone.Player('quack.mp3').toDestination()
       quack.start()
-    }*/
-    
-    function play1 (){
-		const synth = new Tone.Synth().toDestination();
-    const frequency = Math.random() * (200 - 20) + 20;
-    const noteLength = ['2n', '4n', '8n', '16n', '32n', '64n'];
-		const randomIndex = Math.floor(Math.random() * noteLength.length);
-    synth.triggerAttackRelease(frequency,noteLength[randomIndex])
     }
     
-    function play2 (){
-		const synth = new Tone.Synth().toDestination();
-    const frequency = Math.random() * (800 - 300) + 300;
-    const noteLength = ['2n', '4n', '8n', '16n', '32n', '64n'];
-		const randomIndex = Math.floor(Math.random() * noteLength.length);
-    synth.triggerAttackRelease(frequency, noteLength[randomIndex])
+    function playb1 (){
+			const synth = new Tone.Synth().toDestination();
+      const vibrato = new Tone.Vibrato(10, 0.6).toDestination();
+      synth.connect(vibrato);
+    	const frequency = Math.random() * (100 - 20 + 1) + 20;
+    	synth.triggerAttackRelease(frequency,'1n')
     }
     
-    const button = document.querySelector('#play')
-    const btn2 = document.querySelector('#play2')
-    //const duck =  document.querySelector('#quack')
-    //const frog = document.querySelector('#ribbit')
-  	button.addEventListener('click', play1)
-    btn2.addEventListener('click', play2)
-    //duck.addEventListener('click', quack)
-    //frog.addEventListener('click', ribbit)
+    function playb2 (){
+      const synth = new Tone.Synth().toDestination();
+      const frequency = Math.random() * (150 - 70 + 1) + 70;
+      const noteLength = ['2n', '4n', '8n'];
+      const randomIndex = Math.floor(Math.random() * noteLength.length);
+      let vibratoDepth, vibratoFrequency;
+      let selectedNoteLength;
+  			if (selectedNoteLength === '2n') {
+          vibratoDepth = 8;
+          vibratoFrequency = 0.2;
+      } else if (selectedNoteLength === '4n') {
+          vibratoDepth = 6;
+          vibratoFrequency = 0.3;
+  		} else {
+        vibratoDepth = 4;
+        vibratoFrequency = 0.4;
+  		}
+  		const vibrato = new Tone.Vibrato(vibratoDepth, vibratoFrequency).toDestination();
+  		synth.connect(vibrato);
+      synth.triggerAttackRelease(frequency,noteLength[randomIndex]) 
+    }
+    
+    function playb3 (){
+      const synth = new Tone.Synth().toDestination();
+      //const vibrato = new Tone.Vibrato(1, 0.2).toDestination();
+      //synth.connect(vibrato);
+      const frequency = Math.random() * (200 - 120 + 1) + 120;
+      const noteLength = ['16n', '32n', '64n'];
+      const randomIndex = Math.floor(Math.random() * noteLength.length); //line coded with chat gpt help
+      let vibratoDepth, vibratoFrequency;
+      let selectedNoteLength;
+  			if (selectedNoteLength === '16n') {
+          vibratoDepth = 2;
+          vibratoFrequency = 0.6;
+      } else if (selectedNoteLength === '32n') {
+          vibratoDepth = 1;
+          vibratoFrequency = 0.75;
+      } else {
+        vibratoDepth = 0.5;
+        vibratoFrequency = 0.8;
+  		}
+  		const vibrato = new Tone.Vibrato(vibratoDepth, vibratoFrequency).toDestination();
+  		synth.connect(vibrato);
+      synth.triggerAttackRelease(frequency,noteLength[randomIndex]) 
+    }
+    
+    function playm1 (){
+      const synth = new Tone.Synth().toDestination();
+      const vibrato = new Tone.Vibrato(7, 0.7).toDestination();
+      synth.connect(vibrato);
+      const frequency = Math.random() * (500 - 200 + 1) + 200;
+      synth.triggerAttackRelease(frequency, '1n')
+    }
+    
+    function playm2 (){
+      const synth = new Tone.Synth().toDestination();
+      const frequency = Math.random() * (700 - 400 + 1) + 400;
+      const noteLength = ['2n', '4n', '8n'];
+      const randomIndex = Math.floor(Math.random() * noteLength.length);
+      let vibratoDepth, vibratoFrequency;
+      let selectedNoteLength;
+  			if (selectedNoteLength === '2n') {
+          vibratoDepth = 6;
+          vibratoFrequency = 0.3;
+      } else if (selectedNoteLength === '4n') {
+          vibratoDepth = 4.5;
+          vibratoFrequency = 0.5;
+  		} else {
+        vibratoDepth = 3;
+        vibratoFrequency = 0.6;
+  		}
+  		const vibrato = new Tone.Vibrato(vibratoDepth, vibratoFrequency).toDestination();
+  		synth.connect(vibrato);
+      synth.triggerAttackRelease(frequency, noteLength[randomIndex])
+    }
+    
+    function playm3 (){
+      const synth = new Tone.Synth().toDestination();
+      const frequency = Math.random() * (800 - 500 + 1) + 500;
+      const noteLength = ['16n', '32n', '64n'];
+      const randomIndex = Math.floor(Math.random() * noteLength.length);
+      let vibratoDepth, vibratoFrequency;
+      let selectedNoteLength;
+  			if (selectedNoteLength === '16n') {
+          vibratoDepth = 1.5;
+          vibratoFrequency = 0.8;
+      } else if (selectedNoteLength === '32n') {
+          vibratoDepth = 1;
+          vibratoFrequency = 0.75;
+      } else {
+        vibratoDepth = 0.5;
+        vibratoFrequency = 0.8;
+  		}
+  		const vibrato = new Tone.Vibrato(vibratoDepth, vibratoFrequency).toDestination();
+  		synth.connect(vibrato);
+    	synth.triggerAttackRelease(frequency, noteLength[randomIndex])
+    }
+    
+    function playh1 (){
+      const synth = new Tone.Synth().toDestination();
+      const vibrato = new Tone.Vibrato(5, 0.5).toDestination();
+      synth.connect(vibrato);
+      const frequency = Math.random() * (1500 - 1000 + 1) + 1000;
+      synth.triggerAttackRelease(frequency, '1n')
+    }
+    
+    function playh2 (){
+      const synth = new Tone.Synth().toDestination();
+      const frequency = Math.random() * (2000 - 1400 + 1) + 1400;
+      const noteLength = ['2n', '4n', '8n'];
+      let vibratoDepth, vibratoFrequency;
+      let selectedNoteLength;
+  			if (selectedNoteLength === '2n') {
+          vibratoDepth = 4;
+          vibratoFrequency = 0.2;
+      } else if (selectedNoteLength === '4n') {
+          vibratoDepth = 3;
+          vibratoFrequency = 0.3;
+  		} else {
+        vibratoDepth = 2;
+        vibratoFrequency = 0.4;
+  		}
+  		const vibrato = new Tone.Vibrato(vibratoDepth, vibratoFrequency).toDestination();
+  		synth.connect(vibrato);const randomIndex = Math.floor(Math.random() * noteLength.length);
+      synth.triggerAttackRelease(frequency, noteLength[randomIndex])
+    }
+    
+    function playh3 (){
+      const synth = new Tone.Synth().toDestination();
+      const frequency = Math.random() * (2400 - 1800 + 1) + 1800;
+      const noteLength = ['16n', '32n', '64n'];
+      const randomIndex = Math.floor(Math.random() * noteLength.length);
+      let vibratoDepth, vibratoFrequency;
+      let selectedNoteLength;
+  			if (selectedNoteLength === '16n') {
+          vibratoDepth = 1;
+          vibratoFrequency = 0.7; 
+      } else if (selectedNoteLength === '32n') {
+          vibratoDepth = 0.5;
+          vibratoFrequency = 0.75;
+      } else {
+        vibratoDepth = 0.3;
+        vibratoFrequency = 0.8;
+  		}
+  		const vibrato = new Tone.Vibrato(vibratoDepth, vibratoFrequency).toDestination();
+  		synth.connect(vibrato);
+      synth.triggerAttackRelease(frequency, noteLength[randomIndex])
+    }
+    
+    const bass1 = document.querySelector('#playb1')
+    const bass2 = document.querySelector('#playb2')
+    const bass3 =  document.querySelector('#playb3')
+    const m1 = document.querySelector('#playm1')
+    const m2 = document.querySelector('#playm2')
+    const m3 = document.querySelector('#playm3')
+    const h1 = document.querySelector('#playh1')
+    const h2 = document.querySelector('#playh2')
+    const h3 = document.querySelector('#playh3')
+    const duck =  document.querySelector('#quack')
+    const frog = document.querySelector('#ribbit')
+    bass1.addEventListener('click', playb1)
+  	bass2.addEventListener('click', playb2)
+    bass3.addEventListener('click', playb3)
+    m1.addEventListener('click', playm1)
+    m2.addEventListener('click', playm2)
+    m3.addEventListener('click', playm3)
+    h1.addEventListener('click', playh1)
+    h2.addEventListener('click', playh2)
+    h3.addEventListener('click', playh3)
+    duck.addEventListener('click', quack)
+    frog.addEventListener('click', ribbit)
 
 	</script>
