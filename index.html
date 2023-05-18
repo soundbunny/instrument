@@ -132,7 +132,7 @@
 	<script>
     /* global Tone */ 
     const audios = {
-      quack: new Tone.Player('quacks.mp3').toDestination(), 
+      quack: new Tone.Player('quacks.mp3'), 
       ribbit: new Tone.Player('ribbit.mp3').toDestination(),
       moo: new Tone.Player('moo.mp3').toDestination(),
     }
@@ -141,7 +141,12 @@
       audios.ribbit.start()
     }
     
+    const duckGain = new Tone.Gain(1.6);
+    
     function quack (){
+      duckGain.disconnect()
+      audios.quack.connect(duckGain)
+      duckGain.toDestination()
       audios.quack.start()
       }
       
