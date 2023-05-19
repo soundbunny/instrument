@@ -158,8 +158,10 @@
         return
       }
       isRibbiting =  true
+      const playbackRate = Math.random() * 1.2 + 0.3
+  		audios.ribbit.playbackRate = playbackRate
       audios.ribbit.start()
-      const duration = audios.ribbit.buffer.duration
+      const duration = (audios.ribbit.buffer.duration) * (1 / playbackRate)
       frog.style.backgroundColor = '#274f25'
       setTimeout (()=>{
         isRibbiting = false;
@@ -168,7 +170,7 @@
     }
     
     let isQuacking = false
-    const duckGain = new Tone.Gain(1.6);
+    const duckGain = new Tone.Gain(1.6)
     
     function quack (){
       if (isQuacking) {
@@ -178,8 +180,10 @@
       duckGain.disconnect()
       audios.quack.connect(duckGain)
       duckGain.toDestination()
+      const playbackRate = Math.random() * 1.75 + 0.4
+  		audios.quack.playbackRate = playbackRate
       audios.quack.start()
-      const duration = audios.quack.buffer.duration
+      const duration = (audios.quack.buffer.duration) * (1 / playbackRate)
       duck.style.backgroundColor = '#635902'
       setTimeout(() => {
     		isQuacking = false; 
@@ -194,9 +198,22 @@
         return
       }
       isMooing = true
+      const fadeOut = new Tone.Gain()
+      const playbackRate = Math.random() * 1.2 + 0.5
+  		audios.moo.playbackRate = playbackRate
+      const vibratoFrequency = Math.random() * 10 + 1
+    	const vibratoDepth = Math.random() * 1 + 0.1
+  		const vibrato = new Tone.Vibrato(vibratoFrequency, vibratoDepth)
+      audios.moo.connect(vibrato)
+      vibrato.connect(fadeOut)
+      fadeOut.toDestination()
       audios.moo.start()
-      const duration = audios.moo.buffer.duration
+      const duration = audios.moo.buffer.duration * (1 / playbackRate)
       cow.style.backgroundColor = '#523421'
+      const fadeOutStart = duration * 0.75
+  		setTimeout(() => {
+    		fadeOut.gain.linearRampTo(0, duration / 4)
+  		}, fadeOutStart * 1000)
       setTimeout (()=>{
         isMooing =  false;
         cow.style.backgroundColor = '#c28f70'
@@ -205,10 +222,10 @@
     
     function playb1 (){
       b1.style.backgroundColor='#4d3f70'
-			const synth = new Tone.Synth().toDestination();
-      const vibrato = new Tone.Vibrato(10, 0.6).toDestination();
-      synth.connect(vibrato);
-    	const frequency = Math.random() * (100 - 20 + 1) + 20;
+			const synth = new Tone.Synth().toDestination()
+      const vibrato = new Tone.Vibrato(10, 0.6).toDestination()
+      synth.connect(vibrato)
+    	const frequency = Math.random() * (100 - 20 + 1) + 20
       let wait
       wait = (60000/Tone.Transport.bpm.value) * 4
     	synth.triggerAttackRelease(frequency,'1n')
@@ -220,10 +237,10 @@
     function playb2 (){
       b2.style.backgroundColor='#5a3f73'
       const synth = new Tone.Synth().toDestination();
-      const frequency = Math.random() * (150 - 70 + 1) + 70;
-      const noteLength = ['2n', '4n', '8n'];
-      const randomIndex = Math.floor(Math.random() * noteLength.length);
-      let vibratoDepth, vibratoFrequency;
+      const frequency = Math.random() * (150 - 70 + 1) + 70
+      const noteLength = ['2n', '4n', '8n']
+      const randomIndex = Math.floor(Math.random() * noteLength.length)
+      let vibratoDepth, vibratoFrequency
       let selectedNoteLength = noteLength[randomIndex]
       let wait
   			if (selectedNoteLength === '2n') {
