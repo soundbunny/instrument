@@ -9,6 +9,7 @@
     height: 50px;
     margin-right: 10px;
     margin-bottom: 10px;
+    border-radius: 8px;
     font-size: 20px;
     background-color: #7140ed;
   }
@@ -17,6 +18,7 @@
     height: 50px;
     margin-right: 10px;
     margin-bottom: 10px;
+    border-radius: 8px;
     font-size: 20px;
     background-color: #9b48e8;
   }
@@ -25,6 +27,7 @@
     height: 50px;
     margin-right: 10px;
     margin-bottom: 10px;
+    border-radius: 8px;
     font-size: 20px;
     background-color: #bb70e6;
   }
@@ -33,6 +36,7 @@
     height: 50px;
     margin-right: 10px;
     margin-bottom: 10px;
+    border-radius: 8px;
     font-size: 20px;
     background-color: #3188eb;
   }
@@ -41,6 +45,7 @@
     height: 50px;
     margin-right: 10px;
     margin-bottom: 10px;
+    border-radius: 8px;
     font-size: 20px;
     background-color: #30a4e3;
   }
@@ -49,6 +54,7 @@
     height: 50px;
     margin-right: 10px;
     margin-bottom: 10px;
+    border-radius: 8px;
     font-size: 20px;
     background-color: #82d4f5;
   }
@@ -57,14 +63,16 @@
     height: 50px;
     margin-right: 10px;
     margin-bottom: 10px;
+    border-radius: 8px;
     font-size: 20px;
-    background-color: #e322c3;
+    background-color: #db1aa1;
   }
   .h2-button {
     width: 80px;
     height: 50px;
     margin-right: 10px;
     margin-bottom: 10px;
+    border-radius: 8px;
     font-size: 20px;
     background-color: #eb49ad;
   }
@@ -73,6 +81,7 @@
     height: 50px;
     margin-right: 10px;
     margin-bottom: 10px;
+    border-radius: 8px;
     font-size: 20px;
     background-color: #f582c5;
   }
@@ -81,6 +90,7 @@
     height: 50px;
     margin-right: 10px;
     margin-bottom: 10px;
+    border-radius: 8px;
     font-size: 20px;
     background-color: #fff954;
   }
@@ -89,6 +99,7 @@
     height: 50px;
     margin-right: 10px;
     margin-bottom: 10px;
+    border-radius: 8px;
     font-size: 20px;
     background-color: #7ccc84;
   }
@@ -97,6 +108,7 @@
     height: 50px;
     margin-right: 10px;
     margin-bottom: 10px;
+    border-radius: 8px;
     font-size: 20px;
     background-color: #c28f70;
   }
@@ -170,7 +182,7 @@
     }
     
     let isQuacking = false
-    const duckGain = new Tone.Gain(1.6)
+    const duckGain = new Tone.Gain(3)
     
     function quack (){
       if (isQuacking) {
@@ -180,7 +192,7 @@
       duckGain.disconnect()
       audios.quack.connect(duckGain)
       duckGain.toDestination()
-      const playbackRate = Math.random() * 1.75 + 0.4
+      const playbackRate = Math.random() * 1.75 + 0.5
   		audios.quack.playbackRate = playbackRate
       audios.quack.start()
       const duration = (audios.quack.buffer.duration) * (1 / playbackRate)
@@ -188,7 +200,7 @@
       setTimeout(() => {
     		isQuacking = false; 
         duck.style.backgroundColor = '#fff954'
-  			}, duration * 1000)
+  			}, (duration * 1000)-50)
       }
     
     let isMooing = false
@@ -198,30 +210,30 @@
         return
       }
       isMooing = true
-      const fadeOut = new Tone.Gain()
-      const playbackRate = Math.random() * 1.2 + 0.5
+      const playbackRate = Math.random() * 1.2 + 0.6
   		audios.moo.playbackRate = playbackRate
       const vibratoFrequency = Math.random() * 10 + 1
     	const vibratoDepth = Math.random() * 1 + 0.1
   		const vibrato = new Tone.Vibrato(vibratoFrequency, vibratoDepth)
       audios.moo.connect(vibrato)
-      vibrato.connect(fadeOut)
-      fadeOut.toDestination()
+      vibrato.toDestination()
       audios.moo.start()
       const duration = audios.moo.buffer.duration * (1 / playbackRate)
       cow.style.backgroundColor = '#523421'
-      const fadeOutStart = duration * 0.75
-  		setTimeout(() => {
-    		fadeOut.gain.linearRampTo(0, duration / 4)
-  		}, fadeOutStart * 1000)
       setTimeout (()=>{
         isMooing =  false;
         cow.style.backgroundColor = '#c28f70'
       }, duration * 1000)
       }
     
+    let b1Playing = false
+    
     function playb1 (){
-      b1.style.backgroundColor='#4d3f70'
+      if (b1Playing) {
+        return
+      }
+      b1Playing = true
+      b1.style.backgroundColor='#402e6e'
 			const synth = new Tone.Synth().toDestination()
       const vibrato = new Tone.Vibrato(10, 0.6).toDestination()
       synth.connect(vibrato)
@@ -230,12 +242,19 @@
       wait = (60000/Tone.Transport.bpm.value) * 4
     	synth.triggerAttackRelease(frequency,'1n')
       setTimeout(()=>{
-        b1.style.backgroundColor='#7140ed'
+        b1.style.backgroundColor='#7140ed';
+        b1Playing = false
       }, wait)
     }
     
+    let b2Playing = false
+    
     function playb2 (){
-      b2.style.backgroundColor='#5a3f73'
+      if (b2Playing) {
+        return
+      }
+      b2Playing = true
+      b2.style.backgroundColor='#543473'
       const synth = new Tone.Synth().toDestination();
       const frequency = Math.random() * (150 - 70 + 1) + 70
       const noteLength = ['2n', '4n', '8n']
@@ -260,11 +279,18 @@
   		synth.connect(vibrato);
       synth.triggerAttackRelease(frequency,noteLength[randomIndex])
       setTimeout(()=>{
-        b2.style.backgroundColor='#9b48e8'
+        b2.style.backgroundColor='#9b48e8';
+        b2Playing = false
       }, wait)
     }
     
+    let b3Playing= false
+    
     function playb3 (){
+      if (b3Playing) {
+        return
+      }
+      b3Playing= true
       b3.style.backgroundColor = '#6e547d'
       const synth = new Tone.Synth().toDestination();
       //const vibrato = new Tone.Vibrato(1, 0.2).toDestination();
@@ -292,11 +318,16 @@
   		synth.connect(vibrato);
       synth.triggerAttackRelease(frequency,noteLength[randomIndex])
       setTimeout (()=>{
-        b3.style.backgroundColor='#bb70e6'
+        b3.style.backgroundColor='#bb70e6';
+        b3Playing = false
       }, wait)
     }
-    
+    let m1Playing = false
     function playm1 (){
+      if (m1Playing) {
+        return
+      }
+      m1Playing = true
       m1.style.backgroundColor='#173659'
       const synth = new Tone.Synth().toDestination();
       const vibrato = new Tone.Vibrato(7, 0.7).toDestination();
@@ -306,11 +337,17 @@
       wait = (60000/Tone.Transport.bpm.value) * 4
       synth.triggerAttackRelease(frequency, '1n')
       setTimeout(()=>{
-        m1.style.backgroundColor='#3188eb'
+        m1.style.backgroundColor='#3188eb';
+        m1Playing = false
       }, wait)
     }
     
+    let m2Playing = false
     function playm2 (){
+      if (m2Playing){
+        return
+      }
+      m2Playing = true
       m2.style.backgroundColor='#234363'
       const synth = new Tone.Synth().toDestination();
       const frequency = Math.random() * (700 - 400 + 1) + 400;
@@ -336,11 +373,17 @@
   		synth.connect(vibrato);
       synth.triggerAttackRelease(frequency, noteLength[randomIndex])
     	setTimeout(()=>{
-        m2.style.backgroundColor='#30a4e3'
+        m2.style.backgroundColor='#30a4e3';
+        m2Playing = false
       }, wait)
     }
     
+    let m3Playing= false
     function playm3 (){
+      if (m3Playing){
+        return
+      }
+      m3Playing = true
       m3.style.backgroundColor='#3d5f80'
       const synth = new Tone.Synth().toDestination();
       const frequency = Math.random() * (800 - 500 + 1) + 500;
@@ -366,11 +409,17 @@
   		synth.connect(vibrato);
     	synth.triggerAttackRelease(frequency, noteLength[randomIndex])
       setTimeout (()=>{
-        m3.style.backgroundColor='#82d4f5'
+        m3.style.backgroundColor='#82d4f5';
+        m3Playing = false
       }, wait)
     }
+    let h1Playing = false
     
     function playh1 (){
+      if(h1Playing){
+        return
+      }
+      h1Playing = true
       h1.style.backgroundColor='#521447'
       const synth = new Tone.Synth().toDestination();
       const vibrato = new Tone.Vibrato(5, 0.5).toDestination();
@@ -380,11 +429,17 @@
       wait = (60000/Tone.Transport.bpm.value) *4
       synth.triggerAttackRelease(frequency, '1n')
       setTimeout (()=>{
-        h1.style.backgroundColor='#e322c3'
+        h1.style.backgroundColor='#db1aa1';
+        h1Playing = false
       }, wait)
     }
     
+    let h2Playing = false
     function playh2 (){
+      if (h2Playing){
+        return
+      }
+      h2Playing = true
       h2.style.backgroundColor='#6b2851'
       const synth = new Tone.Synth().toDestination();
       const frequency = Math.random() * (2000 - 1400 + 1) + 1400;
@@ -410,11 +465,18 @@
   		synth.connect(vibrato)
       synth.triggerAttackRelease(frequency, noteLength[randomIndex])
     	setTimeout (()=>{
-        h2.style.backgroundColor='#eb49ad'
+        h2.style.backgroundColor='#eb49ad';
+        h2Playing = false
       }, wait)
     }
     
+    let h3Playing = false
+    
     function playh3 (){
+      if (h3Playing){
+        return
+      }
+      h3Playing = true
       h3.style.backgroundColor='#85446a'
       const synth = new Tone.Synth().toDestination();
       const frequency = Math.random() * (2400 - 1800 + 1) + 1800;
@@ -440,7 +502,8 @@
   		synth.connect(vibrato);
       synth.triggerAttackRelease(frequency, noteLength[randomIndex])
     	setTimeout (()=>{
-        h3.style.backgroundColor='#f582c5'
+        h3.style.backgroundColor='#f582c5';
+        h3Playing = false
       }, wait)
     }
     
