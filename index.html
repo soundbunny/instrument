@@ -5,100 +5,100 @@
     text-align: center;
   }
   .b1-button {
-    width: 80;
-    height: 50;
-    margin-right: 10;
-    margin-bottom: 10;
-    font-size: 20;
-    background-color: 7140ed;
+    width: 80px;
+    height: 50px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    background-color: #7140ed;
   }
   .b2-button {
-    width: 80;
-    height: 50;
-    margin-right: 10;
-    margin-bottom: 10;
-    font-size: 20;
-    background-color: 9b48e8;
+    width: 80px;
+    height: 50px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    background-color: #9b48e8;
   }
   .b3-button {
-    width: 80;
-    height: 50;
-    margin-right: 10;
-    margin-bottom: 10;
-    font-size: 20;
-    background-color: bb70e6;
+    width: 80px;
+    height: 50px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    background-color: #bb70e6;
   }
   .m1-button {
-    width: 80;
-    height: 50;
-    margin-right: 10;
-    margin-bottom: 10;
-    font-size: 20;
-    background-color: 3188eb;
+    width: 80px;
+    height: 50px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    background-color: #3188eb;
   }
   .m2-button {
-    width: 80;
-    height: 50;
-    margin-right: 10;
-    margin-bottom: 10;
-    font-size: 20;
-    background-color: 30a4e3;
+    width: 80px;
+    height: 50px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    background-color: #30a4e3;
   }
   .m3-button {
-    width: 80;
-    height: 50;
-    margin-right: 10;
-    margin-bottom: 10;
-    font-size: 20;
-    background-color: 82d4f5;
+    width: 80px;
+    height: 50px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    background-color: #82d4f5;
   }
   .h1-button {
-    width: 80;
-    height: 50;
-    margin-right: 10;
-    margin-bottom: 10;
-    font-size: 20;
-    background-color: e322c3;
+    width: 80px;
+    height: 50px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    background-color: #e322c3;
   }
   .h2-button {
-    width: 80;
-    height: 50;
-    margin-right: 10;
-    margin-bottom: 10;
-    font-size: 20;
-    background-color: eb49ad;
+    width: 80px;
+    height: 50px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    background-color: #eb49ad;
   }
   .h3-button {
-    width: 80;
-    height: 50;
-    margin-right: 10;
-    margin-bottom: 10;
-    font-size: 20;
-    background-color: f582c5;
+    width: 80px;
+    height: 50px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    background-color: #f582c5;
   }
   .duck-button{
-    width: 270;
-    height: 50;
-    margin-right: 10;
-    margin-bottom: 10;
-    font-size: 20;
-    background-color: fff954;
+    width: 270px;
+    height: 50px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    background-color: #fff954;
   }
   .frog-button{
-    width: 270;
-    height: 50;
-    margin-right: 10;
-    margin-bottom: 10;
-    font-size: 20;
-    background-color: 7ccc84;
+    width: 270px;
+    height: 50px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    background-color: #7ccc84;
   }
   .cow-button{
-    width: 270;
-    height: 50;
-    margin-right: 10;
-    margin-bottom: 10;
-    font-size: 20;
-    background-color: c28f70;
+    width: 270px;
+    height: 50px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    background-color: #c28f70;
   }
 </style>
 <table class="centered-table"> <!--table coded with chat gpt help-->
@@ -160,8 +160,10 @@
       isRibbiting =  true
       audios.ribbit.start()
       const duration = audios.ribbit.buffer.duration
+      frog.style.backgroundColor = '#274f25'
       setTimeout (()=>{
-        isRibbiting = false
+        isRibbiting = false;
+        frog.style.backgroundColor = '#7ccc84'
       }, duration * 1000)
     }
     
@@ -178,8 +180,10 @@
       duckGain.toDestination()
       audios.quack.start()
       const duration = audios.quack.buffer.duration
+      duck.style.backgroundColor = '#635902'
       setTimeout(() => {
-    		isQuacking = false
+    		isQuacking = false; 
+        duck.style.backgroundColor = '#fff954'
   			}, duration * 1000)
       }
     
@@ -192,13 +196,15 @@
       isMooing = true
       audios.moo.start()
       const duration = audios.moo.buffer.duration
+      cow.style.backgroundColor = '#523421'
       setTimeout (()=>{
-        isMooing =  false
+        isMooing =  false;
+        cow.style.backgroundColor = '#c28f70'
       }, duration * 1000)
       }
     
     function playb1 (){
-      b1.style.display='none'
+      b1.style.backgroundColor='#4d3f70'
 			const synth = new Tone.Synth().toDestination();
       const vibrato = new Tone.Vibrato(10, 0.6).toDestination();
       synth.connect(vibrato);
@@ -207,12 +213,12 @@
       wait = (60000/Tone.Transport.bpm.value) * 4
     	synth.triggerAttackRelease(frequency,'1n')
       setTimeout(()=>{
-        b1.style.display='block'
+        b1.style.backgroundColor='#7140ed'
       }, wait)
     }
     
     function playb2 (){
-      b2.style.display='none'
+      b2.style.backgroundColor='#5a3f73'
       const synth = new Tone.Synth().toDestination();
       const frequency = Math.random() * (150 - 70 + 1) + 70;
       const noteLength = ['2n', '4n', '8n'];
@@ -237,12 +243,12 @@
   		synth.connect(vibrato);
       synth.triggerAttackRelease(frequency,noteLength[randomIndex])
       setTimeout(()=>{
-        b2.style.display='block'
+        b2.style.backgroundColor='#9b48e8'
       }, wait)
     }
     
     function playb3 (){
-      b3.style.display = 'none'
+      b3.style.backgroundColor = '#6e547d'
       const synth = new Tone.Synth().toDestination();
       //const vibrato = new Tone.Vibrato(1, 0.2).toDestination();
       //synth.connect(vibrato);
@@ -269,12 +275,12 @@
   		synth.connect(vibrato);
       synth.triggerAttackRelease(frequency,noteLength[randomIndex])
       setTimeout (()=>{
-        b3.style.display='block'
+        b3.style.backgroundColor='#bb70e6'
       }, wait)
     }
     
     function playm1 (){
-      m1.style.display='none'
+      m1.style.backgroundColor='#173659'
       const synth = new Tone.Synth().toDestination();
       const vibrato = new Tone.Vibrato(7, 0.7).toDestination();
       synth.connect(vibrato);
@@ -283,12 +289,12 @@
       wait = (60000/Tone.Transport.bpm.value) * 4
       synth.triggerAttackRelease(frequency, '1n')
       setTimeout(()=>{
-        m1.style.display='block'
+        m1.style.backgroundColor='#3188eb'
       }, wait)
     }
     
     function playm2 (){
-      m2.style.display='none'
+      m2.style.backgroundColor='#234363'
       const synth = new Tone.Synth().toDestination();
       const frequency = Math.random() * (700 - 400 + 1) + 400;
       const noteLength = ['2n', '4n', '8n'];
@@ -313,12 +319,12 @@
   		synth.connect(vibrato);
       synth.triggerAttackRelease(frequency, noteLength[randomIndex])
     	setTimeout(()=>{
-        m2.style.display='block'
+        m2.style.backgroundColor='#30a4e3'
       }, wait)
     }
     
     function playm3 (){
-      m3.style.display='none'
+      m3.style.backgroundColor='#3d5f80'
       const synth = new Tone.Synth().toDestination();
       const frequency = Math.random() * (800 - 500 + 1) + 500;
       const noteLength = ['16n', '32n', '64n'];
@@ -343,12 +349,12 @@
   		synth.connect(vibrato);
     	synth.triggerAttackRelease(frequency, noteLength[randomIndex])
       setTimeout (()=>{
-        m3.style.display='block'
+        m3.style.backgroundColor='#82d4f5'
       }, wait)
     }
     
     function playh1 (){
-      h1.style.display='none'
+      h1.style.backgroundColor='#521447'
       const synth = new Tone.Synth().toDestination();
       const vibrato = new Tone.Vibrato(5, 0.5).toDestination();
       synth.connect(vibrato);
@@ -357,12 +363,12 @@
       wait = (60000/Tone.Transport.bpm.value) *4
       synth.triggerAttackRelease(frequency, '1n')
       setTimeout (()=>{
-        h1.style.display='block'
+        h1.style.backgroundColor='#e322c3'
       }, wait)
     }
     
     function playh2 (){
-      h2.style.display='none'
+      h2.style.backgroundColor='#6b2851'
       const synth = new Tone.Synth().toDestination();
       const frequency = Math.random() * (2000 - 1400 + 1) + 1400;
       const noteLength = ['2n', '4n', '8n'];
@@ -387,12 +393,12 @@
   		synth.connect(vibrato)
       synth.triggerAttackRelease(frequency, noteLength[randomIndex])
     	setTimeout (()=>{
-        h2.style.display='block'
+        h2.style.backgroundColor='#eb49ad'
       }, wait)
     }
     
     function playh3 (){
-      h3.style.display='none'
+      h3.style.backgroundColor='#85446a'
       const synth = new Tone.Synth().toDestination();
       const frequency = Math.random() * (2400 - 1800 + 1) + 1800;
       const noteLength = ['16n', '32n', '64n'];
@@ -417,7 +423,7 @@
   		synth.connect(vibrato);
       synth.triggerAttackRelease(frequency, noteLength[randomIndex])
     	setTimeout (()=>{
-        h3.style.display='block'
+        h3.style.backgroundColor='#f582c5'
       }, wait)
     }
     
