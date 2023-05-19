@@ -159,7 +159,7 @@
     
     const audios = {
       quack: new Tone.Player('quacks.mp3'), 
-      ribbit: new Tone.Player('ribbit.mp3').toDestination(),
+      ribbit: new Tone.Player('ribbit.mp3'),
       moo: new Tone.Player('moo.mp3').toDestination(),
     }
     
@@ -170,8 +170,15 @@
         return
       }
       isRibbiting =  true
-      const playbackRate = Math.random() * 1.2 + 0.3
+      const playbackRate = Math.random() * 1.2 + 0.5
   		audios.ribbit.playbackRate = playbackRate
+      const reverbSize = Math.random() * 0.3
+  		const reverbDecay = Math.random() * 3 + 1
+  		const reverb = new Tone.Reverb(reverbSize).set({ decay: reverbDecay })
+  		reverb.wet.value = 0.5
+      reverb.disconnect()
+  		audios.ribbit.connect(reverb)
+  		reverb.toDestination()
       audios.ribbit.start()
       const duration = (audios.ribbit.buffer.duration) * (1 / playbackRate)
       frog.style.backgroundColor = '#274f25'
@@ -191,9 +198,13 @@
       isQuacking =  true
       duckGain.disconnect()
       audios.quack.connect(duckGain)
-      duckGain.toDestination()
-      const playbackRate = Math.random() * 1.75 + 0.5
+      const playbackRate = Math.random() * 1.75 + 0.7
   		audios.quack.playbackRate = playbackRate
+      const chebyshevOrder = Math.floor(Math.random() * 10) + 1
+  		const chebyshev = new Tone.Chebyshev(chebyshevOrder).toDestination()
+      chebyshev.wet.value = 0.3
+  		duckGain.connect(chebyshev)
+  		chebyshev.toDestination()
       audios.quack.start()
       const duration = (audios.quack.buffer.duration) * (1 / playbackRate)
       duck.style.backgroundColor = '#635902'
@@ -213,8 +224,9 @@
       const playbackRate = Math.random() * 1.2 + 0.6
   		audios.moo.playbackRate = playbackRate
       const vibratoFrequency = Math.random() * 10 + 1
-    	const vibratoDepth = Math.random() * 1 + 0.1
+    	const vibratoDepth = Math.random() 
   		const vibrato = new Tone.Vibrato(vibratoFrequency, vibratoDepth)
+      vibrato.disconnect()
       audios.moo.connect(vibrato)
       vibrato.toDestination()
       audios.moo.start()
