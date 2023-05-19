@@ -132,27 +132,69 @@
 <script src="https://tonejs.github.io/build/Tone.js"></script>
 	<script>
     /* global Tone */ 
+    const b1 = document.querySelector('#playb1')
+    const b2 = document.querySelector('#playb2')
+    const b3 = document.querySelector('#playb3')
+    const m1 = document.querySelector('#playm1')
+    const m2 = document.querySelector('#playm2')
+    const m3 = document.querySelector('#playm3')
+    const h1 = document.querySelector('#playh1')
+    const h2 = document.querySelector('#playh2')
+    const h3 = document.querySelector('#playh3')
+    const duck = document.querySelector('#quack')
+    const frog = document.querySelector('#ribbit')
+    const cow = document.querySelector('#moo')
+    
     const audios = {
       quack: new Tone.Player('quacks.mp3'), 
       ribbit: new Tone.Player('ribbit.mp3').toDestination(),
       moo: new Tone.Player('moo.mp3').toDestination(),
     }
     
+    let isRibbiting = false
+    
    	function ribbit (){
+      if (isRibbiting) {
+        return
+      }
+      isRibbiting =  true
       audios.ribbit.start()
+      const duration = audios.ribbit.buffer.duration
+      setTimeout (()=>{
+        isRibbiting = false
+      }, duration * 1000)
     }
     
+    let isQuacking = false
     const duckGain = new Tone.Gain(1.6);
     
     function quack (){
+      if (isQuacking) {
+        return
+      }
+      isQuacking =  true
       duckGain.disconnect()
       audios.quack.connect(duckGain)
       duckGain.toDestination()
       audios.quack.start()
+      const duration = audios.quack.buffer.duration
+      setTimeout(() => {
+    		isQuacking = false
+  			}, duration * 1000)
       }
-      
+    
+    let isMooing = false
+    
     function moo (){
+      if (isMooing) {
+        return
+      }
+      isMooing = true
       audios.moo.start()
+      const duration = audios.moo.buffer.duration
+      setTimeout (()=>{
+        isMooing =  false
+      }, duration * 1000)
       }
     
     function playb1 (){
@@ -379,18 +421,6 @@
       }, wait)
     }
     
-    const b1 = document.querySelector('#playb1')
-    const b2 = document.querySelector('#playb2')
-    const b3 = document.querySelector('#playb3')
-    const m1 = document.querySelector('#playm1')
-    const m2 = document.querySelector('#playm2')
-    const m3 = document.querySelector('#playm3')
-    const h1 = document.querySelector('#playh1')
-    const h2 = document.querySelector('#playh2')
-    const h3 = document.querySelector('#playh3')
-    const duck = document.querySelector('#quack')
-    const frog = document.querySelector('#ribbit')
-    const cow = document.querySelector('#moo')
     b1.addEventListener('click', playb1)
   	b2.addEventListener('click', playb2)
     b3.addEventListener('click', playb3)
