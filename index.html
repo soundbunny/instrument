@@ -160,7 +160,7 @@
     const audios = {
       quack: new Tone.Player('quacks.mp3'), 
       ribbit: new Tone.Player('ribbit.mp3'),
-      moo: new Tone.Player('moo.mp3').toDestination(),
+      moo: new Tone.Player('moo.mp3'),
     }
     
     let isRibbiting = false
@@ -223,7 +223,7 @@
       isMooing = true
       const playbackRate = Math.random() * 1.2 + 0.6
   		audios.moo.playbackRate = playbackRate
-      const vibratoFrequency = Math.random() * 10 + 1
+      const vibratoFrequency = Math.random() * 10 + 4
     	const vibratoDepth = Math.random() 
   		const vibrato = new Tone.Vibrato(vibratoFrequency, vibratoDepth)
       vibrato.disconnect()
@@ -250,7 +250,7 @@
 			const synth = new Tone.Synth().toDestination()
       const vibrato = new Tone.Vibrato(10, 0.6).toDestination()
       synth.connect(vibrato)
-    	const frequency = Math.random() * (100 - 20 + 1) + 20
+    	const frequency = Math.random() * (100 - 30 + 1) + 30
       let wait
       wait = (60000/Tone.Transport.bpm.value) * 4
     	synth.triggerAttackRelease(frequency,'1n')
