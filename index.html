@@ -1,5 +1,5 @@
 <!-- work in progress, would love feedback if possible -->
-<style>
+<style> 
   .centered-table {
     margin: auto;
     text-align: center;
@@ -113,7 +113,7 @@
     background-color: #c28f70;
   }
 </style>
-<table class="centered-table"> <!--table coded with chat gpt help-->
+<table class="centered-table"> 
   <tr>
     <td><button id="playb1" class="b1-button">b1</button></td>
     <td><button id="playb2" class="b2-button">b2</button></td>
@@ -187,9 +187,9 @@
         frog.style.backgroundColor = '#7ccc84'
       }, duration * 1000)
     }
-    
+    //randomized reverb coded with chatgpt help
     let isQuacking = false
-    const duckGain = new Tone.Gain(3)
+    const duckGain = new Tone.Gain(2)
     
     function quack (){
       if (isQuacking) {
@@ -213,7 +213,7 @@
         duck.style.backgroundColor = '#fff954'
   			}, (duration * 1000)-50)
       }
-    
+    	//randomized chebyshev coded with chatgpt help
     let isMooing = false
     
     function moo (){
@@ -237,9 +237,10 @@
         cow.style.backgroundColor = '#c28f70'
       }, duration * 1000)
       }
-    
+    	//randomized vibrato coded with chatgpt help
     let b1Playing = false
     
+    //vibrato for b1-h3 and note length randomizer coded with chat gpt help
     function playb1 (){
       if (b1Playing) {
         return
