@@ -172,12 +172,15 @@
     }
     
     let isRibbiting = false
+    const frogGain = new Tone.Gain(0.8)
     
    	function ribbit (){
       if (isRibbiting) {
         return
       }
       isRibbiting =  true
+      frogGain.disconnect()
+      audios.ribbit.connect(frogGain)
       const playbackRate = Math.random() * 1.2 + 0.5
   		audios.ribbit.playbackRate = playbackRate
       const reverbSize = Math.random() * 0.3
@@ -185,11 +188,11 @@
   		const reverb = new Tone.Reverb(reverbSize).set({ decay: reverbDecay })
   		reverb.wet.value = 0.5
       reverb.disconnect()
-  		audios.ribbit.connect(reverb)
+  		frogGain.connect(reverb)
       const vibratoFrequency = Math.random() * 10 + 6;
       const vibratoDepth = Math.random();
       const vibrato = new Tone.Vibrato(vibratoFrequency, vibratoDepth).toDestination();
-      reverb.connect(vibrato);
+      reverb.connect(vibrato).toDestination()
       audios.ribbit.start()
       const duration = (audios.ribbit.buffer.duration) * (1 / playbackRate)
       frog.style.backgroundColor = '#274f25'
