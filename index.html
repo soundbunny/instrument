@@ -173,7 +173,7 @@
     
     let isRibbiting = false
     const frogGain = new Tone.Gain(0.8)
-    
+    //all randomized vibrato coded with chatgpt help
    	function ribbit (){
       if (isRibbiting) {
         return
@@ -254,10 +254,9 @@
         cow.style.backgroundColor = '#c28f70'
       }, duration * 1000)
       }
-    	//randomized vibrato coded with chatgpt help
+   
     let b1Playing = false
     
-    //vibrato for b1-h3 and note length randomizer coded with chat gpt help
     function playb1 (){
       if (b1Playing) {
         return
@@ -285,7 +284,7 @@
       }
       b2Playing = true
       b2.style.backgroundColor='#543473'
-      const synth = new Tone.Synth().toDestination();
+      const synth = new Tone.Synth().toDestination()
       const frequency = Math.random() * (150 - 70 + 1) + 70
       const noteLength = ['2n', '4n', '8n']
       const randomIndex = Math.floor(Math.random() * noteLength.length)
@@ -293,19 +292,19 @@
       let selectedNoteLength = noteLength[randomIndex]
       let wait
   			if (selectedNoteLength === '2n') {
-          vibratoDepth = 8;
-          vibratoFrequency = 0.2;
+          vibratoDepth = 8
+          vibratoFrequency = 0.2
           wait = (60000/Tone.Transport.bpm.value) * 2
       } else if (selectedNoteLength === '4n') {
-          vibratoDepth = 6;
-          vibratoFrequency = 0.3;
+          vibratoDepth = 6
+          vibratoFrequency = 0.3
         	wait = 60000/Tone.Transport.bpm.value
   		} else {
-        vibratoDepth = 4;
-        vibratoFrequency = 0.4;
+        vibratoDepth = 4
+        vibratoFrequency = 0.4
         wait = (60000/Tone.Transport.bpm.value) * 0.5
   		}
-  		const vibrato = new Tone.Vibrato(vibratoDepth, vibratoFrequency).toDestination();
+  		const vibrato = new Tone.Vibrato(vibratoDepth, vibratoFrequency).toDestination()
   		synth.connect(vibrato);
       synth.triggerAttackRelease(frequency,noteLength[randomIndex])
       setTimeout(()=>{
@@ -322,33 +321,31 @@
       }
       b3Playing= true
       b3.style.backgroundColor = '#6e547d'
-      const synth = new Tone.Synth().toDestination();
-      //const vibrato = new Tone.Vibrato(1, 0.2).toDestination();
-      //synth.connect(vibrato);
-      const frequency = Math.random() * (200 - 120 + 1) + 120;
-      const noteLength = ['16n', '32n', '64n'];
-      const randomIndex = Math.floor(Math.random() * noteLength.length); //line coded with chat gpt help
-      let vibratoDepth, vibratoFrequency;
+      const synth = new Tone.Synth().toDestination()
+      const frequency = Math.random() * (200 - 120 + 1) + 120
+      const noteLength = ['16n', '32n', '64n']
+      const randomIndex = Math.floor(Math.random() * noteLength.length)
+      let vibratoDepth, vibratoFrequency
       let wait
       let selectedNoteLength = noteLength[randomIndex];
   			if (selectedNoteLength === '16n') {
-          vibratoDepth = 2;
-          vibratoFrequency = 0.6;
+          vibratoDepth = 2
+          vibratoFrequency = 0.6
           wait = (60000/Tone.Transport.bpm.value) * 0.5 * 0.5
       } else if (selectedNoteLength === '32n') {
-          vibratoDepth = 1;
-          vibratoFrequency = 0.75;
+          vibratoDepth = 1
+          vibratoFrequency = 0.75
         	wait = (60000/Tone.Transport.bpm.value) * 0.5 * 0.5 * 0.5
       } else {
-        vibratoDepth = 0.5;
-        vibratoFrequency = 0.8;
+        vibratoDepth = 0.5
+        vibratoFrequency = 0.8
         wait = (60000/Tone.Transport.bpm.value) * 0.5 * 0.5 * 0.5 * 0.5
   		}
-  		const vibrato = new Tone.Vibrato(vibratoDepth, vibratoFrequency).toDestination();
-  		synth.connect(vibrato);
+  		const vibrato = new Tone.Vibrato(vibratoDepth, vibratoFrequency).toDestination()
+  		synth.connect(vibrato)
       synth.triggerAttackRelease(frequency,noteLength[randomIndex])
       setTimeout (()=>{
-        b3.style.backgroundColor='#bb70e6';
+        b3.style.backgroundColor='#bb70e6'
         b3Playing = false
       }, wait)
     }
@@ -359,10 +356,10 @@
       }
       m1Playing = true
       m1.style.backgroundColor='#173659'
-      const synth = new Tone.Synth().toDestination();
-      const vibrato = new Tone.Vibrato(7, 0.7).toDestination();
-      synth.connect(vibrato);
-      const frequency = Math.random() * (500 - 200 + 1) + 200;
+      const synth = new Tone.Synth().toDestination()
+      const vibrato = new Tone.Vibrato(7, 0.7).toDestination()
+      synth.connect(vibrato)
+      const frequency = Math.random() * (500 - 200 + 1) + 200
       let wait
       wait = (60000/Tone.Transport.bpm.value) * 4
       synth.triggerAttackRelease(frequency, '1n')
@@ -379,28 +376,28 @@
       }
       m2Playing = true
       m2.style.backgroundColor='#234363'
-      const synth = new Tone.Synth().toDestination();
-      const frequency = Math.random() * (700 - 400 + 1) + 400;
-      const noteLength = ['2n', '4n', '8n'];
-      const randomIndex = Math.floor(Math.random() * noteLength.length);
+      const synth = new Tone.Synth().toDestination()
+      const frequency = Math.random() * (700 - 400 + 1) + 400
+      const noteLength = ['2n', '4n', '8n']
+      const randomIndex = Math.floor(Math.random() * noteLength.length)
       let vibratoDepth, vibratoFrequency
-      let selectedNoteLength = noteLength[randomIndex];
+      let selectedNoteLength = noteLength[randomIndex]
   		let wait
       if (selectedNoteLength === '2n') {
-          vibratoDepth = 6;
-          vibratoFrequency = 0.3;
+          vibratoDepth = 6
+          vibratoFrequency = 0.3
           wait = (60000/Tone.Transport.bpm.value) * 2
       } else if (selectedNoteLength === '4n') {
-          vibratoDepth = 4.5;
-          vibratoFrequency = 0.5;
+          vibratoDepth = 4.5
+          vibratoFrequency = 0.5
         wait = 60000/Tone.Transport.bpm.value
   		} else {
-        vibratoDepth = 3;
-        vibratoFrequency = 0.6;
+        vibratoDepth = 3
+        vibratoFrequency = 0.6
         wait = (60000/Tone.Transport.bpm.value) * 0.5
   		}
-  		const vibrato = new Tone.Vibrato(vibratoDepth, vibratoFrequency).toDestination();
-  		synth.connect(vibrato);
+  		const vibrato = new Tone.Vibrato(vibratoDepth, vibratoFrequency).toDestination()
+  		synth.connect(vibrato)
       synth.triggerAttackRelease(frequency, noteLength[randomIndex])
     	setTimeout(()=>{
         m2.style.backgroundColor='#30a4e3';
@@ -415,31 +412,31 @@
       }
       m3Playing = true
       m3.style.backgroundColor='#3d5f80'
-      const synth = new Tone.Synth().toDestination();
-      const frequency = Math.random() * (800 - 500 + 1) + 500;
-      const noteLength = ['16n', '32n', '64n'];
-      const randomIndex = Math.floor(Math.random() * noteLength.length);
-      let vibratoDepth, vibratoFrequency;
+      const synth = new Tone.Synth().toDestination()
+      const frequency = Math.random() * (800 - 500 + 1) + 500
+      const noteLength = ['16n', '32n', '64n']
+      const randomIndex = Math.floor(Math.random() * noteLength.length)
+      let vibratoDepth, vibratoFrequency
       let wait
       let selectedNoteLength = noteLength[randomIndex];
   			if (selectedNoteLength === '16n') {
-          vibratoDepth = 1.5;
-          vibratoFrequency = 0.8;
+          vibratoDepth = 1.5
+          vibratoFrequency = 0.8
           wait = (60000/Tone.Transport.bpm.value) * 0.5 * 0.5
       } else if (selectedNoteLength === '32n') {
-          vibratoDepth = 1;
-          vibratoFrequency = 0.75;
+          vibratoDepth = 1
+          vibratoFrequency = 0.75
         	wait = (60000/Tone.Transport.bpm.value) * 0.5 * 0.5 * 0.5
       } else {
-        	vibratoDepth = 0.5;
-        	vibratoFrequency = 0.8;
+        	vibratoDepth = 0.5
+        	vibratoFrequency = 0.8
           wait = (60000/Tone.Transport.bpm.value) * 0.5 * 0.5 * 0.5 * 0.5
   		}
-  		const vibrato = new Tone.Vibrato(vibratoDepth, vibratoFrequency).toDestination();
-  		synth.connect(vibrato);
+  		const vibrato = new Tone.Vibrato(vibratoDepth, vibratoFrequency).toDestination()
+  		synth.connect(vibrato)
     	synth.triggerAttackRelease(frequency, noteLength[randomIndex])
       setTimeout (()=>{
-        m3.style.backgroundColor='#82d4f5';
+        m3.style.backgroundColor='#82d4f5'
         m3Playing = false
       }, wait)
     }
@@ -451,15 +448,15 @@
       }
       h1Playing = true
       h1.style.backgroundColor='#521447'
-      const synth = new Tone.Synth().toDestination();
-      const vibrato = new Tone.Vibrato(5, 0.5).toDestination();
-      synth.connect(vibrato);
-      const frequency = Math.random() * (1500 - 1000 + 1) + 1000;
+      const synth = new Tone.Synth().toDestination()
+      const vibrato = new Tone.Vibrato(5, 0.5).toDestination()
+      synth.connect(vibrato)
+      const frequency = Math.random() * (1500 - 1000 + 1) + 1000
       let wait
       wait = (60000/Tone.Transport.bpm.value) *4
       synth.triggerAttackRelease(frequency, '1n')
       setTimeout (()=>{
-        h1.style.backgroundColor='#db1aa1';
+        h1.style.backgroundColor='#db1aa1'
         h1Playing = false
       }, wait)
     }
@@ -471,27 +468,27 @@
       }
       h2Playing = true
       h2.style.backgroundColor='#6b2851'
-      const synth = new Tone.Synth().toDestination();
-      const frequency = Math.random() * (2000 - 1400 + 1) + 1400;
-      const noteLength = ['2n', '4n', '8n'];
-      const randomIndex = Math.floor(Math.random() * noteLength.length);
-      let vibratoDepth, vibratoFrequency;
+      const synth = new Tone.Synth().toDestination()
+      const frequency = Math.random() * (2000 - 1400 + 1) + 1400
+      const noteLength = ['2n', '4n', '8n']
+      const randomIndex = Math.floor(Math.random() * noteLength.length)
+      let vibratoDepth, vibratoFrequency
       let wait
       let selectedNoteLength = noteLength[randomIndex];
   			if (selectedNoteLength === '2n') {
-          vibratoDepth = 4;
-          vibratoFrequency = 0.2;
+          vibratoDepth = 4
+          vibratoFrequency = 0.2
           wait = (60000/Tone.Transport.bpm.value) * 2
       } else if (selectedNoteLength === '4n') {
-          vibratoDepth = 3;
-          vibratoFrequency = 0.3;
+          vibratoDepth = 3
+          vibratoFrequency = 0.3
         	wait = 60000/Tone.Transport.bpm.value
   		} else {
-        vibratoDepth = 2;
-        vibratoFrequency = 0.4;
+        vibratoDepth = 2
+        vibratoFrequency = 0.4
         wait = (60000/Tone.Transport.bpm.value) * 0.5
   		}
-  		const vibrato = new Tone.Vibrato(vibratoDepth, vibratoFrequency).toDestination();
+  		const vibrato = new Tone.Vibrato(vibratoDepth, vibratoFrequency).toDestination()
   		synth.connect(vibrato)
       synth.triggerAttackRelease(frequency, noteLength[randomIndex])
     	setTimeout (()=>{
@@ -508,28 +505,28 @@
       }
       h3Playing = true
       h3.style.backgroundColor='#85446a'
-      const synth = new Tone.Synth().toDestination();
-      const frequency = Math.random() * (2400 - 1800 + 1) + 1800;
-      const noteLength = ['16n', '32n', '64n'];
-      const randomIndex = Math.floor(Math.random() * noteLength.length);
-      let vibratoDepth, vibratoFrequency;
+      const synth = new Tone.Synth().toDestination()
+      const frequency = Math.random() * (2400 - 1800 + 1) + 1800
+      const noteLength = ['16n', '32n', '64n']
+      const randomIndex = Math.floor(Math.random() * noteLength.length)
+      let vibratoDepth, vibratoFrequency
       let wait
-      let selectedNoteLength = noteLength[randomIndex];
+      let selectedNoteLength = noteLength[randomIndex]
   			if (selectedNoteLength === '16n') {
-          vibratoDepth = 1;
-          vibratoFrequency = 0.7; 
+          vibratoDepth = 1
+          vibratoFrequency = 0.7 
           wait = (60000/Tone.Transport.bpm.value) * 0.5 * 0.5
       } else if (selectedNoteLength === '32n') {
-          vibratoDepth = 0.5;
-          vibratoFrequency = 0.75;
+          vibratoDepth = 0.5
+          vibratoFrequency = 0.75
         	wait = (60000/Tone.Transport.bpm.value) * 0.5 * 0.5 * 0.5
       } else {
        		vibratoDepth = 0.3;
         	vibratoFrequency = 0.8;
         	wait = (60000/Tone.Transport.bpm.value) * 0.5 * 0.5 * 0.5 * 0.5
   		}
-  		const vibrato = new Tone.Vibrato(vibratoDepth, vibratoFrequency).toDestination();
-  		synth.connect(vibrato);
+  		const vibrato = new Tone.Vibrato(vibratoDepth, vibratoFrequency).toDestination()
+  		synth.connect(vibrato)
       synth.triggerAttackRelease(frequency, noteLength[randomIndex])
     	setTimeout (()=>{
         h3.style.backgroundColor='#f582c5';
