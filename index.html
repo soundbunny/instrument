@@ -186,7 +186,7 @@
   		reverb.wet.value = 0.5
       reverb.disconnect()
   		audios.ribbit.connect(reverb)
-      const vibratoFrequency = Math.random() * 10 + 4;
+      const vibratoFrequency = Math.random() * 10 + 6;
       const vibratoDepth = Math.random();
       const vibrato = new Tone.Vibrato(vibratoFrequency, vibratoDepth).toDestination();
       reverb.connect(vibrato);
