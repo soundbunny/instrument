@@ -240,12 +240,16 @@
       isMooing = true
       const playbackRate = Math.random() * 1.2 + 0.6
   		audios.moo.playbackRate = playbackRate
-      const vibratoFrequency = Math.random() * 8 + 4
+      const vibratoFrequency = Math.random() * 6 + 4
     	const vibratoDepth = Math.random() 
   		const vibrato = new Tone.Vibrato(vibratoFrequency, vibratoDepth)
+      const bitcrusherBits = Math.floor(Math.random() * 9) + 5
+  		const bitcrusher = new Tone.BitCrusher(bitcrusherBits).toDestination()
+  		bitcrusher.wet.value = 0.5
       vibrato.disconnect()
       audios.moo.connect(vibrato)
-      vibrato.toDestination()
+      vibrato.connect(bitcrusher)
+      bitcrusher.toDestination()
       audios.moo.start()
       const duration = audios.moo.buffer.duration * (1 / playbackRate)
       cow.style.backgroundColor = '#523421'
