@@ -250,7 +250,7 @@
 			const synth = new Tone.Synth().toDestination()
       const vibrato = new Tone.Vibrato(10, 0.6).toDestination()
       synth.connect(vibrato)
-    	const frequency = Math.random() * (100 - 30 + 1) + 30
+    	const frequency = Math.random() * (100 - 40 + 1) + 40
       let wait
       wait = (60000/Tone.Transport.bpm.value) * 4
     	synth.triggerAttackRelease(frequency,'1n')
